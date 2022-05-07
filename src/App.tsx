@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from "react";
-import { gridHeight, gridRows } from "./game";
-import { useGame } from "./useGame";
-import { Cell } from "./Cell";
-import "./styles.css";
+import { useEffect, useRef, useState } from 'react';
+import { gridHeight, gridRows } from './game';
+import { useGame } from './useGame';
+import { Cell } from './Cell';
+import './styles.css';
 
 function App() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -28,18 +28,14 @@ function App() {
         return (
           <div key={`Row-${rowIndex}`} className="flex">
             {Array.from({ length: gridRows }).map((_, index) => (
-              <Cell
-                key={`Cell-${rowIndex}-${index}`}
-                column={index}
-                row={rowIndex}
-              />
+              <Cell key={`Cell-${rowIndex}-${index}`} column={index} row={rowIndex} />
             ))}
           </div>
         );
       })}
       <div className="ui-container">
         <div className="ui-menu">
-          <button onClick={togglePlay}>{isPlaying ? "Stop" : "Play"}</button>
+          <button onClick={togglePlay}>{isPlaying ? 'Stop' : 'Play'}</button>
           <button onClick={clean}>Clean board</button>
           <span>{gridHeight * gridRows} cells</span>
         </div>

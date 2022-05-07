@@ -1,8 +1,8 @@
-import create from "zustand";
-import produce from "immer";
-import { subscribeWithSelector } from "zustand/middleware";
+import create from 'zustand';
+import produce from 'immer';
+import { subscribeWithSelector } from 'zustand/middleware';
 
-import { Grid, getEmptyGrid, tick } from "./game";
+import { Grid, getEmptyGrid, tick } from './game';
 
 interface BearState {
   grid: Grid;
@@ -20,9 +20,9 @@ export const useGame = create(
       set(
         produce<BearState>((state) => {
           state.grid[x][y] = !state.grid[x][y];
-        })
+        }),
       ),
     tick: () => set(({ grid }) => ({ grid: tick(grid) })),
     clean: () => set({ grid: getEmptyGrid() }),
-  }))
+  })),
 );

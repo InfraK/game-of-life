@@ -5,14 +5,14 @@ export const tick = (grid: Grid): Grid => {
       const sameRowNeighbors = getNeighbors(row, index);
 
       const getTopBottomNeighbors = neighboringRows
-        .map((row) => row?.slice(index - 1, index + 2) ?? [])
+        .map((neighborRow) => neighborRow?.slice(index - 1, index + 2) ?? [])
         .flat();
 
       const allNeighbors = [...getTopBottomNeighbors, ...sameRowNeighbors];
 
       const aliveNeighbors = allNeighbors.reduce(
         (aliveCount, neighbor) => (neighbor ? aliveCount + 1 : aliveCount),
-        0
+        0,
       );
       if (!val && aliveNeighbors === 3) {
         return true;
@@ -21,7 +21,7 @@ export const tick = (grid: Grid): Grid => {
         return true;
       }
       return false;
-    })
+    }),
   );
   return updatedGrid;
 };
@@ -43,5 +43,5 @@ export const getEmptyGrid = (): Grid =>
   Array.from({ length: gridHeight }).map(() =>
     Array.from({ length: gridRows }).map(() => {
       return false;
-    })
+    }),
   );
